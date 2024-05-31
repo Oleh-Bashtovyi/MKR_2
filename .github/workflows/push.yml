@@ -1,0 +1,19 @@
+name: Docker Compose and Test
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Build Docker containers
+        run: |
+          docker-compose build
+      - name: Run tests
+        run: |
+          docker-compose run web python manage.py test
