@@ -10,7 +10,9 @@
                     {% for image in category.image_set.all %}
                         <div class="col-md-4">
                             <div class="card mb-4">
-                                <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+                                <a href="{% url 'image_detail' image.id %}">
+                                    <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+                                </a>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ image.title }}</h5>
                                 </div>
